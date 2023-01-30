@@ -1,7 +1,8 @@
 import axios from "axios";
-import {useState} from "react";
-import {Link} from "react-router-dom";
-import {Col, Container, Row} from "reactstrap";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Col, Container, Row } from "reactstrap";
+import { baseURL } from "../constant";
 
 // import { redirect } from "react-router-dom";
 function Test() {
@@ -93,7 +94,7 @@ function Test() {
             className=" badge bg-success w-25 p-2 fs-6 rounded-1 "
             onClick={async () => {
               await axios
-                .post("/create_user", {
+                .post(baseURL + "/create_user", {
                   name: name,
                   surname: surname,
                   email: email,

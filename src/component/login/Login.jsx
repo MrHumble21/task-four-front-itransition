@@ -1,10 +1,12 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Lottie from "react-lottie";
 import animationData from "./anim.json";
 
 import axios from "axios";
-import {input} from "formik";
-import {Col, Container, Row} from "reactstrap";
+import { input } from "formik";
+import { Col, Container, Row } from "reactstrap";
+import { baseURL } from "../../constant";
+
 // import { baseUrl } from "../../constant";
 
 const defaultOptions = {
@@ -75,7 +77,7 @@ function Login(props) {
                 type="submit"
                 onClick={async () => {
                   axios
-                    .post("/login", {
+                    .post(baseURL + "/login", {
                       email: email,
                       password: password,
                     })
@@ -85,7 +87,7 @@ function Login(props) {
                         response.statusText === "OK"
                       ) {
                         axios
-                          .post("/updateLoginTime", { email })
+                          .post(baseURL + "/updateLoginTime", { email })
                           .then((res) => {
                             console.log(res);
                           })
@@ -106,15 +108,6 @@ function Login(props) {
                         setNo("Invalid password or email address");
                       }
                     });
-
-                  // await axios
-                  //   .post("/lastlogin", { email })
-                  //   .then(function (response) {
-                  //     console.log(response);
-                  //   })
-                  //   .catch(function (error) {
-                  //     console.log(error);
-                  //   });
                 }}
                 className="badge bg-info  w-25 p-3 fs-5 my-4 rounded-3 "
               >
