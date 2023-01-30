@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useLayoutEffect, useState } from "react";
-import { baseUrl } from "../../constant";
+import { baseURL } from "../../constant";
+
 import NoData from "./NoData";
 
 const listOfUsers = [];
@@ -11,7 +12,7 @@ function Admin() {
   // const [listOfUsers, setListOfUsers] = useState([]);
   const getdata = async () => {
     await axios
-      .get(baseUrl + "/all_users")
+      .get(baseURL + "/all_users")
       .then((res) => setUsers(res.data))
       .catch((err) => console.log(err));
   };
@@ -35,7 +36,7 @@ function Admin() {
             onClick={async () => {
               if (listOfUsers.length > 0) {
                 axios
-                  .post(baseUrl + "/delete_selected_users", {
+                  .post(baseURL + "/delete_selected_users", {
                     selectedUsers: listOfUsers,
                   })
                   .then((res) => console.log(res));
@@ -55,7 +56,7 @@ function Admin() {
               }}
               onClick={() => {
                 axios
-                  .post(baseUrl + "/delete_all")
+                  .post(baseURL + "/delete_all")
                   .then((res) => console.log(res));
 
                 // window.location.reload();
@@ -158,7 +159,7 @@ function Admin() {
                         type="button"
                         onClick={async () => {
                           await axios
-                            .post(baseUrl + `/block_user`, {
+                            .post(baseURL + `/block_user`, {
                               id: user._id,
                             })
                             .then((res) => {
@@ -180,7 +181,7 @@ function Admin() {
                         onClick={async () => {
                           console.log("clicked");
                           await axios
-                            .post(baseUrl + `/delete_user`, { id: user._id })
+                            .post(baseURL + `/delete_user`, { id: user._id })
                             .then((res) => {
                               console.log(res);
                             });
