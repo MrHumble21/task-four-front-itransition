@@ -1,1 +1,1 @@
-export const baseURL = "https://brainy-shift-tick.cyclic.app";
+export const baseURL = "http://itransition.mrhumble.uz";
