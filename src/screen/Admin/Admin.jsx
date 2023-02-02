@@ -22,7 +22,7 @@ function Admin() {
   };
   useLayoutEffect(() => {
     asyncListUsers();
-  });
+  },[]);
   useEffect(() => {}, []);
   return (
     <div className="p-1 overflow-scroll container-fluid">
